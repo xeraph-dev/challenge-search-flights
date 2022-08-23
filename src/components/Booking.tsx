@@ -238,6 +238,37 @@ export default function Booking({ filter, filterOptions, onFilter, onSearch }: B
     [filter, onFilter],
   )
 
+  const renderSearch = useMemo(
+    () => (
+      <button type="button" title="Search travel" onClick={() => onSearch()}>
+        <FaSearch />
+      </button>
+    ),
+    [onSearch],
+  )
+
+  const renderDataListOrigins = useMemo(
+    () => (
+      <datalist id="booking--origins">
+        {filterOptions.origins.map(v => (
+          <option key={v} value={v} />
+        ))}
+      </datalist>
+    ),
+    [filterOptions.origins],
+  )
+
+  const renderDataListDestinations = useMemo(
+    () => (
+      <datalist id="booking--destinations">
+        {filterOptions.destinations.map(v => (
+          <option key={v} value={v} />
+        ))}
+      </datalist>
+    ),
+    [filterOptions.destinations],
+  )
+
   return (
     <div className="booking">
       <h3>Search hundreds of travel sites at once.</h3>
@@ -254,20 +285,10 @@ export default function Booking({ filter, filterOptions, onFilter, onSearch }: B
         {renderDestination}
         {renderDepatureDate}
         {renderReturnDate}
-        <button type="button" title="Search travel" onClick={() => onSearch()}>
-          <FaSearch />
-        </button>
+        {renderSearch}
       </section>
-      <datalist id="booking--origins">
-        {filterOptions.origins.map(v => (
-          <option key={v} value={v} />
-        ))}
-      </datalist>
-      <datalist id="booking--destinations">
-        {filterOptions.destinations.map(v => (
-          <option key={v} value={v} />
-        ))}
-      </datalist>
+      {renderDataListOrigins}
+      {renderDataListDestinations}
     </div>
   )
 }

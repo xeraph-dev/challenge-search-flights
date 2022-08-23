@@ -26,6 +26,7 @@ const initFilterOption: TravelFilterOptions = {
 }
 
 export default function App() {
+  const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState<TravelFilter>(initFilter)
   const [filterOption, setFilterOption] = useState<TravelFilterOptions>(initFilterOption)
 
@@ -38,6 +39,8 @@ export default function App() {
   }, [])
 
   const getFilterOptions = useCallback(async () => {
+    setLoading(true)
+
     const data = await repos.travel.getFilterOptions()
     setFilterOption(data)
 
@@ -47,7 +50,20 @@ export default function App() {
       travelClass: data.travelClasses[0],
       passengers: Object.keys(data.maxPassengersTypes).reduce((acc, curr) => ({ ...acc, [curr]: 0 }), {}),
     })
+
+    setLoading(false)
   }, [])
+
+  const getData = useCallback(async () => {
+    if (!loading) {
+      const data = await repos.travel.getTravels(filter)
+      console.log(data)
+    }
+  }, [filter, loading])
+
+  useLayoutEffect(() => {
+    getData()
+  }, [getData])
 
   useLayoutEffect(() => {
     getFilterOptions()
