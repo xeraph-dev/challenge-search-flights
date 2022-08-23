@@ -54,20 +54,11 @@ export default function App() {
     setLoading(false)
   }, [])
 
-  const getData = useCallback(async () => {
-    if (!loading) {
-      const data = await repos.travel.getTravels(filter)
-      console.log(data)
-    }
-  }, [filter, loading])
-
-  useLayoutEffect(() => {
-    getData()
-  }, [getData])
-
   useLayoutEffect(() => {
     getFilterOptions()
   }, [getFilterOptions])
+
+  console.log(filter)
 
   return (
     <div className="app">
