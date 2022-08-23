@@ -1,0 +1,71 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "extends": [
+    "standard",
+    "prettier",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "prettier",
+    "simple-import-sort",
+    "import",
+    "unused-imports",
+    "sort-destructure-keys",
+    "@typescript-eslint",
+    "typescript-sort-keys"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": [
+      "warn",
+      {
+        "additionalHooks": "(useRecoilCallback|useRecoilTransaction_UNSTABLE)"
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "react/display-name": "off",
+    "react/prop-types": "off",
+    "react/self-closing-comp": "error",
+    "prettier/prettier": "error",
+    "arrow-body-style": ["error", "as-needed"],
+    "prefer-arrow-callback": "off",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
+    "sort-destructure-keys/sort-destructure-keys": [
+      "error",
+      { "caseSensitive": true }
+    ],
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": "off",
+    "typescript-sort-keys/interface": "error",
+    "typescript-sort-keys/string-enum": "error"
+  },
+  "ignorePatterns": ["/dist/**/*", "/node_modules/**/*"]
+}

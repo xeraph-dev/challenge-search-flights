@@ -1,0 +1,91 @@
+.booking {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-4);
+
+  header {
+    > ul {
+      display: flex;
+      gap: var(--size-3);
+    }
+  }
+
+  :where(ul) {
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  &--dropdown-list {
+    display: flex;
+    flex-direction: column;
+
+    > li {
+      white-space: nowrap;
+      font-size: var(--font-size-1);
+
+      > button {
+        box-shadow: none;
+        justify-content: flex-start;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        padding: var(--size-2) var(--size-fluid-2);
+        width: 100%;
+        border-radius: 0;
+
+        &:hover {
+          background-color: var(--gray-7);
+        }
+      }
+    }
+  }
+
+  &--passengers-types {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-3);
+    padding: var(--size-fluid-2);
+
+    > li {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: var(--size-3);
+
+      > div {
+        display: flex;
+        gap: var(--size-2);
+        align-items: center;
+
+        button {
+          height: var(--size-6);
+          padding: 0;
+          width: var(--size-6);
+
+          :not(:disabled) {
+            box-shadow: var(--shadow-2);
+          }
+
+          &:hover {
+            box-shadow: var(--shadow-1);
+          }
+        }
+      }
+    }
+  }
+
+  > section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--size-3);
+
+    input {
+      max-width: var(--size-12);
+    }
+  }
+}
